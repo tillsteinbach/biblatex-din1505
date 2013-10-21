@@ -7,7 +7,7 @@ Usage
 ------
 
 Use like this:
-\usepackage[texencoding=utf8, backend=biber, style=din1505, block=none, mincrossrefs=9999]{biblatex}
+    \usepackage[texencoding=utf8, backend=biber, style=din1505, block=none, mincrossrefs=9999]{biblatex}
 
 Contributions
 --------------
