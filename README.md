@@ -11,3 +11,4 @@ Use like this:
 
 Contributions
 --------------
+Please feel free to improve the style. Not everything is implemented or checked yet. If you contribute patches please add a reference to the respective part of the DIN
