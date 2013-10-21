@@ -1,0 +1,64 @@
+\ProvidesFile{din1505.cbx}[2013/02/04 v1.0 din1505 biblatex citation style]
+
+\RequireCitationStyle{alphabetic}
+
+\ExecuteBibliographyOptions{labeldate=true, labelalpha=true, autocite=inline}
+
+
+\renewbibmacro*{cite}{%
+  \printtext[bibhyperref]{%
+    %\printfield{prefixnumber}%
+    \printnames{labelname}%
+    \addspace\printfield{labelyear}\printfield{extrayear}\unspace}
+}
+
+\DeclareCiteCommand{\cite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}\unspace}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}\unspace}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}\unspace}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}\unspace}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkbibparens\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}\unspace}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+  {\let\cbx@tempa=\empty
+   \undef\cbx@lasthash}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{textcite}}
+  {}
+  {\usebibmacro{postnote}%
+   \bibclosebracket}
+
+\DeclareMultiCiteCommand{\cites}[\mkbibparens]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkbibparens]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkbibparens\mkbibfootnote]{\smartcite}{\multicitedelim}
+
+
+\endinput
