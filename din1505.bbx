@@ -3,13 +3,21 @@
 \RequireBibliographyStyle{alphabetic}
 \ExecuteBibliographyOptions{uniquelist=minyear, labeldate=true, minnames=3, maxnames=3, date=iso8601, urldate=iso8601, isbn=true, labelalpha=true, sorting=nyvt, sortlocale=de}
 
+\newtoggle{bbx:shownodate}
+\DeclareBibliographyOption{shownodate}[true]{%
+  \settoggle{bbx:shownodate}{#1}}
+
+\ExecuteBibliographyOptions{shownodate}
+
 \NewBibliographyString{stand}
 \NewBibliographyString{organizer}
+\NewBibliographyString{nodate}
 
 \DefineBibliographyStrings{ngerman}{%
-   urlseen  = {Abruf\addcolon\space},
-   stand    = {Stand\addcolon\space},
+   urlseen   = {Abruf\addcolon\space},
+   stand     = {Stand\addcolon\space},
    organizer = {Veranst.},
+   nodate    = {o.D.},
 }
 
 \DeclareFieldFormat{labelalphawidth}{#1}
@@ -34,7 +42,7 @@
      {\textbf{%
 	    \printnames{labelname}%
 	    \setunit{\nameyeardelim}
-	    \iffieldundef{labelyear}{}{\printfield{labelyear}\printfield{extrayear}}}}
+	    \iffieldundef{labelyear}{\iftoggle{bbx:shownodate}{\bibstring{nodate}}{} \printfield{extrayear}}{\printfield{labelyear}\printfield{extrayear}}}}
      {\setlength{\labelwidth}{\labelalphawidth}%
       \setlength{\leftmargin}{\labelwidth}%
       \setlength{\labelsep}{\biblabelsep}%
